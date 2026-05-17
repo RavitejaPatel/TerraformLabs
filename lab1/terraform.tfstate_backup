@@ -1,0 +1,68 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.8",
+  "serial": 3,
+  "lineage": "fa2bac4f-35ac-4fbc-858e-e9619d34cb0a",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "lab1",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/3e5d410e-b019-448d-ace5-36c2a8b670bc/resourceGroups/zionsbancorp_prep",
+            "location": "eastus",
+            "managed_by": "",
+            "name": "zionsbancorp_prep",
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_virtual_network",
+      "name": "lab1",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address_space": [
+              "10.0.0.0/16"
+            ],
+            "bgp_community": "",
+            "ddos_protection_plan": [],
+            "dns_servers": [],
+            "edge_zone": "",
+            "encryption": [],
+            "flow_timeout_in_minutes": 0,
+            "guid": "5a2dcd5e-58c5-4136-9d46-a5318c82732c",
+            "id": "/subscriptions/3e5d410e-b019-448d-ace5-36c2a8b670bc/resourceGroups/zionsbancorp_prep/providers/Microsoft.Network/virtualNetworks/lab1-vnet",
+            "location": "eastus",
+            "name": "lab1-vnet",
+            "resource_group_name": "zionsbancorp_prep",
+            "subnet": [],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "azurerm_resource_group.lab1"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

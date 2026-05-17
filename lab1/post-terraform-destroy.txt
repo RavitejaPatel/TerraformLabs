@@ -1,0 +1,43 @@
+# Terraform Destroy and State File Notes
+
+## Will `terraform destroy` delete both RG and VNET?
+**Yes.** Running `terraform destroy` will look at your current state and configuration and destroy **every** resource defined in it. Since both the Resource Group (`azurerm_resource_group.example`) and the Virtual Network (`azurerm_virtual_network.example`) are managed in your `main.tf`, a standard `terraform destroy` will delete both.
+
+---
+
+## How to delete ONLY the VNet (and keep the Resource Group)
+
+You have two main ways to achieve this in Terraform, depending on what your long-term goal is:
+
+### Method 1: The CLI approach (Targeted Destroy)
+If you just want to quickly remove the VNet from Azure via the command line, you can use the `-target` flag. This tells Terraform to only focus on a specific resource.
+
+```bash
+terraform destroy -target=azurerm_virtual_network.example
+```
+*   Terraform will show a plan indicating that only the virtual network will be destroyed.
+*   **Warning:** While useful for quick operations or troubleshooting, HashiCorp recommends avoiding `-target` for routine operations because it can make your state file out-of-sync with your actual configuration files.
+
+### Method 2: The Declarative approach (Best Practice)
+Terraform is designed to be declarative—your code should always match what exists in reality. If you no longer want the VNet to exist, the best practice is to remove it from your code.
+
+1.  Open your `main.tf` file.
+2.  **Delete (or comment out)** the entire `azurerm_virtual_network` block.
+3.  Run `terraform plan`. 
+    *   Terraform will notice that the VNet is in the state file (it exists in Azure) but is no longer in your code. It will plan to **destroy** just the VNet.
+4.  Run `terraform apply`.
+    *   Terraform will execute the plan, deleting the VNet in Azure, but it will leave the Resource Group perfectly intact.
+
+---
+
+## Where is the state file stored?
+
+By default, when you are just running Terraform on your own machine, the state file is stored **locally** in the exact same directory where you run your Terraform commands. It is named `terraform.tfstate`.
+
+### In a real-world/production environment...
+Storing the state file locally on your laptop is bad practice for a team because:
+1.  **Collaboration:** Other engineers can't see the state if it's on your laptop.
+2.  **Locking:** If two people run `terraform apply` at the same time, it can corrupt the infrastructure.
+3.  **Security:** The state file often contains sensitive data (passwords, connection strings) in plain text.
+
+Because of this, in production, DevOps engineers configure a **"Remote Backend"**. When configured, Terraform stores the `terraform.tfstate` file securely in the cloud instead of your local machine. For Azure, the standard practice is to store it in an **Azure Storage Account (Blob Storage)**.

@@ -1,0 +1,25 @@
+3. The State Lifecycle (Commands) 🛠️
+Interviewers often ask how to fix a "broken" state. We’ll practice the logic behind commands like:
+
+terraform import: Bringing existing Azure resources into code.
+
+terraform state mv/rm: Refactoring your code without destroying resources.
+
+terraform refresh: Aligning state with the real world.
+
+
+Other commands :
+
+terraform init:
+This command downloads the necessary Azure provider plugins we defined in the required_providers block.
+
+
+Review the Execution Plan
+Before actually creating resources, you should always check what Terraform plans to do. This ensures you aren't accidentally deleting or creating something unexpected.
+terraform plan:
+
+Apply the Configuration
+terraform apply
+
+Cleanup (When you are done testing): Because Azure charges for resources, you'll want to clean this up when you're finished experimenting so you don't incur costs. You can destroy everything Terraform just created by running:
+terraform destroy
