@@ -27,3 +27,10 @@ resource "azurerm_resource_group" "lab2" {
   name     = "zionsbancorp_lab2"
   location = "East US"
 }
+
+resource "azurerm_virtual_network" "lab2" {
+  name                = var.vnet_name
+  location            = azurerm_resource_group.lab2.location
+  resource_group_name = azurerm_resource_group.lab2.name
+  address_space       = var.vnet_address_space
+}

@@ -12,3 +12,15 @@ variable "azure_state_resource_group" {
   description = "Resource group where the existing storage account for Terraform state is located."
   type        = string
 }
+
+variable "vnet_name" {
+  description = "Name of the lab2 virtual network."
+  type        = string
+  default     = "lab2vnet"
+}
+
+variable "vnet_address_space" {
+  description = "Address space for the lab2 virtual network."
+  type        = list(string)
+  default     = ["10.1.0.0/16"]
+}
