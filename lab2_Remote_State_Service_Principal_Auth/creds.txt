@@ -1,0 +1,3 @@
+clientid : 03dbd89a-e02c-424b-9b71-83f12516ef0a
+tenantid : a5361382-13d2-45a7-b977-db0a63d6ccb8
+SUBID: 3e5d410e-b019-448d-ace5-36c2a8b670bc
