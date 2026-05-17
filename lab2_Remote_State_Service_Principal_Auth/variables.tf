@@ -16,7 +16,7 @@ variable "azure_state_resource_group" {
 variable "vnet_name" {
   description = "Name of the lab2 virtual network."
   type        = string
-  default     = "lab2vnet"
+  default     = "lab2vnet1"
 }
 
 variable "vnet_address_space" {
