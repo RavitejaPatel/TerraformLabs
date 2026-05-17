@@ -1,18 +1,3 @@
-terraform {
-  backend "azurerm" {}
-
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
-
 data "azurerm_storage_account" "tfstate" {
   name                = var.storage_account_name
   resource_group_name = var.azure_state_resource_group
